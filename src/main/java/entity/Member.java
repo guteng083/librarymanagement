@@ -28,7 +28,7 @@ public class Member {
     @Column()
     private int borrowedLimit;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BorrowingRecord> BorrowingRecords;
 
     @Override
