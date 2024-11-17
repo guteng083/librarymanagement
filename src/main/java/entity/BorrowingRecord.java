@@ -40,7 +40,7 @@ public class BorrowingRecord {
     private BorrowingStatus status;
 
     @Column(name = "late_fees")
-    private double lateFees;
+    private Integer lateFees;
 
     @Override
     public String toString() {
