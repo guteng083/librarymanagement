@@ -2,6 +2,10 @@ package Repository;
 
 import entity.Book;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 
 import java.util.List;
 
@@ -30,8 +34,13 @@ public class BookRepository {
         return entityManager.find(Book.class, id);
     }
 
-    public Book findByTitle(String title) {
-        return entityManager.find(Book.class, title);
+    public List<Book> findByTitle(String title) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Book> cq = cb.createQuery(Book.class);
+        Root<Book> root = cq.from(Book.class);
+        cq.select(root).where(cb.equal(root.get("title"), title));
+
+        return entityManager.createQuery(cq).getResultList();
     }
 
     public Book findByAuthor(String author) {

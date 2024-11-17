@@ -21,7 +21,7 @@ public class Main {
             System.out.println("-".repeat(30));
             System.out.println("1. Add Book");
             System.out.println("2. Show Book");
-            System.out.println("3. Search Book by ID");
+            System.out.println("3. Search Book");
             System.out.println("4. Update Book");
             System.out.println("5. Delete Book");
             System.out.println("6. Exit");
@@ -48,8 +48,26 @@ public class Main {
                     });
                     break;
                 case "3":
-                    String id = ScannerUtils.inputText("ID");
-                    System.out.println(bookRepository.findById(id).toString());
+                    System.out.println("Search Book");
+                    System.out.println("-".repeat(30));
+                    System.out.println("1. Search Book by ID");
+                    System.out.println("2. Search Book by Title");
+                    System.out.println("3. Search Book by Author");
+                    String choice = ScannerUtils.inputText("Choice");
+                    switch (choice) {
+                        case "1":
+                            String id = ScannerUtils.inputText("ID");
+                            System.out.println(bookRepository.findById(id).toString());
+                            break;
+                        case "2":
+                            String searchTitle = ScannerUtils.inputText("Title");
+                            System.out.println(bookRepository.findByTitle(searchTitle).toString());
+                            break;
+                        case "3":
+
+                        default:
+                            break;
+                    }
                     break;
                 case "4":
                     String bookId = ScannerUtils.inputText("Book ID");
