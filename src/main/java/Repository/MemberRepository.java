@@ -1,5 +1,6 @@
 package Repository;
 
+import entity.BorrowingRecord;
 import entity.Member;
 import jakarta.persistence.EntityManager;
 
@@ -53,5 +54,9 @@ public class MemberRepository {
                 entityManager.getTransaction().rollback();
             }
         }
+    }
+
+    public List<BorrowingRecord> viewMemberRecords() {
+        return entityManager.createQuery("select m from BorrowingRecord m", BorrowingRecord.class).getResultList();
     }
 }
