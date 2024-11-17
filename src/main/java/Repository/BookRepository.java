@@ -43,8 +43,13 @@ public class BookRepository {
         return entityManager.createQuery(cq).getResultList();
     }
 
-    public Book findByAuthor(String author) {
-        return entityManager.find(Book.class, author);
+    public List<Book> findByAuthor(String author) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Book> cq = cb.createQuery(Book.class);
+        Root<Book> root = cq.from(Book.class);
+        cq.select(root).where(cb.equal(root.get("author"), author));
+
+        return entityManager.createQuery(cq).getResultList();
     }
 
     public List<Book> findAll() {

@@ -61,10 +61,18 @@ public class Main {
                             break;
                         case "2":
                             String searchTitle = ScannerUtils.inputText("Title");
-                            System.out.println(bookRepository.findByTitle(searchTitle).toString());
+                            List<Book> searchTitleResult = bookRepository.findByTitle(searchTitle);
+                            searchTitleResult.forEach(b -> {
+                                System.out.println(b.toString());
+                            });
                             break;
                         case "3":
-
+                            String searchAuthor = ScannerUtils.inputText("Author");
+                            List<Book> searchAuthorResult = bookRepository.findByAuthor(searchAuthor);
+                            searchAuthorResult.forEach(b -> {
+                                System.out.println(b.toString());
+                            });
+                            break;
                         default:
                             break;
                     }
