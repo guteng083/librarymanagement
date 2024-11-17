@@ -26,7 +26,7 @@ public class Member {
     private String phoneNumber;
 
     @Column()
-    private int borrowedLimit = 3;
+    private int borrowedLimit;
 
     @OneToMany(mappedBy = "member")
     private List<BorrowingRecord> BorrowingRecords;
