@@ -30,6 +30,14 @@ public class BookRepository {
         return entityManager.find(Book.class, id);
     }
 
+    public Book findByTitle(String title) {
+        return entityManager.find(Book.class, title);
+    }
+
+    public Book findByAuthor(String author) {
+        return entityManager.find(Book.class, author);
+    }
+
     public List<Book> findAll() {
         return entityManager.createQuery("from Book", Book.class).getResultList();
     }
