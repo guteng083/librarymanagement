@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Date;
+import java.util.List;
 
 @Setter
 @Getter
@@ -34,6 +35,9 @@ public class Book {
 
     @Column(nullable = false)
     private BookStatus status;
+
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BorrowingRecord> borrowingRecords;
 
     @Override
     public String toString() {
