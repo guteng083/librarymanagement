@@ -1,5 +1,6 @@
 package Repository;
 
+import Constant.BorrowingStatus;
 import entity.BorrowingRecord;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -51,5 +52,13 @@ public class BorrowingRepository {
         Root<BorrowingRecord> root = query.from(BorrowingRecord.class);
         query.select(root).where(cb.equal(root.get("book"), bookId));
         return entityManager.createQuery(query).getSingleResult();
+    }
+
+    public List<BorrowingRecord> viewBorrowedRecords(){
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<BorrowingRecord> query = cb.createQuery(BorrowingRecord.class);
+        Root<BorrowingRecord> root = query.from(BorrowingRecord.class);
+        query.select(root).where(cb.equal(root.get("status"), BorrowingStatus.BORROWED));
+        return entityManager.createQuery(query).getResultList();
     }
 }
