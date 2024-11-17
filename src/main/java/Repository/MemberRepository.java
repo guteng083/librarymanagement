@@ -56,7 +56,7 @@ public class MemberRepository {
         }
     }
 
-    public List<BorrowingRecord> viewMemberRecords() {
-        return entityManager.createQuery("select m from BorrowingRecord m", BorrowingRecord.class).getResultList();
+    public List<BorrowingRecord> viewMemberRecords(Member member) {
+        return member.getBorrowingRecords();
     }
 }
