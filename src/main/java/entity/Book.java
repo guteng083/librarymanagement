@@ -1,5 +1,6 @@
 package entity;
 
+import Constant.BookStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,12 +29,21 @@ public class Book {
     @Column(name = "published_date")
     private Date publishedDate;
 
+    @Column(name = "total_copies", nullable = false)
+    private Integer totalCopies;
+
+    @Column(nullable = false)
+    private BookStatus status;
+
     @Override
     public String toString() {
-        return "ID = " + id + "\n" +
+        return "-".repeat(30) + '\n' +
+                "ID = " + id + '\n' +
                 "Title = " + title + '\n' +
                 "Author = " + author + '\n' +
                 "Publisher = " + publisher + '\n' +
-                "Published Date = " + publishedDate;
+                "Published Date = " + publishedDate + '\n' +
+                "Total Copies = " + totalCopies + '\n' +
+                "Status = " + status;
     }
 }
