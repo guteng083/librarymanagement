@@ -241,6 +241,9 @@ public class Main {
                             LocalDateTime borrowTime = LocalDateTime.now();
                             LocalDateTime dueDate = borrowTime.plusDays(7);
                             book.setTotalCopies(book.getTotalCopies() - 1);
+                            if(book.getTotalCopies() == 0) {
+                                book.setStatus(BookStatus.BORROWED);
+                            }
                             BorrowingRecord borrowingRecord = BorrowingRecord.builder()
                                     .book(book)
                                     .member(member)
