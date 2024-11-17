@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Setter
 @Getter
@@ -27,13 +28,13 @@ public class BorrowingRecord {
     private Member member;
 
     @Column(name = "borrow_date")
-    private Date borrowDate;
+    private LocalDateTime borrowDate;
 
     @Column(name = "due_date")
-    private Date dueDate;
+    private LocalDateTime dueDate;
 
     @Column(name = "return_date")
-    private Date returnDate;
+    private LocalDateTime returnDate;
 
     @Column(name = "status")
     private BorrowingStatus status;
