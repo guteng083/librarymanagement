@@ -45,8 +45,8 @@ public class BorrowingRecord {
     @Override
     public String toString() {
         return "Id = " + id + '\n' +
-                "Book = " + book + '\n' +
-                "Member = " + member + '\n' +
+                "Book Title = " + book.getTitle() + '\n' +
+                "Member Name = " + member.getName() + '\n' +
                 "Borrow Date = " + borrowDate + '\n' +
                 "Due Date = " + dueDate + '\n' +
                 "Return Date = " + returnDate + '\n' +
