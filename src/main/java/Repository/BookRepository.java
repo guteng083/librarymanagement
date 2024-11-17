@@ -38,7 +38,7 @@ public class BookRepository {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Book> cq = cb.createQuery(Book.class);
         Root<Book> root = cq.from(Book.class);
-        cq.select(root).where(cb.equal(root.get("title"), title));
+        cq.select(root).where(cb.equal(cb.lower(root.get("title")), title.toLowerCase()));
 
         return entityManager.createQuery(cq).getResultList();
     }
@@ -47,7 +47,7 @@ public class BookRepository {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Book> cq = cb.createQuery(Book.class);
         Root<Book> root = cq.from(Book.class);
-        cq.select(root).where(cb.equal(root.get("author"), author));
+        cq.select(root).where(cb.equal(cb.lower(root.get("author")), author.toLowerCase()));
 
         return entityManager.createQuery(cq).getResultList();
     }
