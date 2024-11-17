@@ -30,6 +30,10 @@ public class MemberRepository {
         return entityManager.createQuery("select m from Member m", Member.class).getResultList();
     }
 
+    public Member findMemberById(String id) {
+        return entityManager.find(Member.class, id);
+    }
+
     public void update(Member member) {
         try{
             entityManager.getTransaction().begin();
