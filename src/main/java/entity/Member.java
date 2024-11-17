@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,6 +29,9 @@ public class Member {
 
     @Column()
     private int borrowedLimit = 3;
+
+    @OneToMany(mappedBy = "member")
+    private List<BorrowingRecord> BorrowingRecords;
 
     @Override
     public String toString() {
